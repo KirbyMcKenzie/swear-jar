@@ -7,10 +7,10 @@ const IndexPage = () => {
   const [mounted, setMounted] = useState(false);
   const { systemTheme, theme, setTheme } = useTheme();
 
-  const [balance, setBalance, isPersistent, error] = useChromeStorageLocal(
-    "counterLocal",
-    0
-  );
+  const [balance, setBalance] =
+    process.env.NODE_ENV === "production"
+      ? useChromeStorageLocal("counterLocal", 0)
+      : useState(0);
 
   useEffect(() => {
     setMounted(true);
@@ -47,7 +47,7 @@ const IndexPage = () => {
 
   return (
     <main className="max-w-lg mx-auto p-4" style={{ minWidth: 400 }}>
-      <div className=" white container flex justify-between items-center">
+      <div className="container flex justify-between items-center">
         <h1 className="text-3xl font-bold text-center">
           {`Balance: ${formatter.format(balance)}`}
         </h1>
