@@ -2095,6 +2095,11 @@ uri-js@^4.2.2:
   dependencies:
     punycode "^2.1.0"
 
+use-chrome-storage@^1.0.7:
+  version "1.0.7"
+  resolved "https://registry.yarnpkg.com/use-chrome-storage/-/use-chrome-storage-1.0.7.tgz#c882390481ab871f1fd2a827918d7a6cfc55ea37"
+  integrity sha512-TfkYuDQiTrNojChLdqjkWM4mE6S+RR7WHRfbI6kwAnSc8wO+yGE7hboF28+zvVi6ZLvYTtLaK5Pz6/jrq1GdQw==
+
 use-subscription@1.5.1:
   version "1.5.1"
   resolved "https://registry.yarnpkg.com/use-subscription/-/use-subscription-1.5.1.tgz#73501107f02fad84c6dd57965beb0b75c68c42d1"
