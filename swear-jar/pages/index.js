@@ -10,12 +10,17 @@ const IndexPage = () => {
   const [mounted, setMounted] = useState(false);
   const { systemTheme, theme, setTheme } = useTheme();
 
-  const { reward: confettiReward, isAnimating: isConfettiAnimating } =
-    useReward("confettiReward", "emoji", {
-      emoji: ["🤬", "👿", "🤑", "😬"],
-      position: "absolute",
-      angle: "90",
-    });
+  const { reward: emojiRewardSwear } = useReward("emojiRewardSwear", "emoji", {
+    emoji: ["🤬"],
+    position: "absolute",
+    angle: "90",
+  });
+
+  const { reward: emojiRewardMoney } = useReward("emojiRewardMoney", "emoji", {
+    emoji: ["💵"],
+    position: "absolute",
+    angle: "90",
+  });
 
   const [balance, setBalance] =
     process.env.NODE_ENV === "production"
@@ -74,31 +79,33 @@ const IndexPage = () => {
         {renderThemeChanger()}
       </div>
 
-      <p className="text-sm text-slate-500">{`Kindly donated from ${numSwears} swears.`}</p>
+      <p className="text-sm text-slate-500">{`Kindly donated from ${numSwears} swears`}</p>
 
       <div className="flex flex-col mt-4">
         <div className="flex flex-col" style={{ minHeight: 66 }}>
           <button
-            id="confettiReward"
+            id="emojiRewardSwear"
             className="bg-red-600 dark:bg-red-500 text-white font-medium py-4 px-4 rounded border-b-8 border-red-700 active:border-b-0 active:translate-y-1"
             onClick={() => {
               setBalance(balance + 2.0);
               setNumSwears(numSwears + 1);
-              confettiReward();
+              emojiRewardSwear();
             }}
           >
             {"Oh, #$%!"}
           </button>
         </div>
-        <p></p>
         <button
+          id="emojiRewardMoney"
+          disabled={balance === 0}
           className="mt-2 p-2 rounded-md text-slate-500 text-sm hover:bg-slate-200 hover:dark:bg-slate-800 hover:dark:text-slate-500"
           onClick={() => {
             setBalance(0);
             setNumSwears(0);
+            emojiRewardMoney();
           }}
         >
-          {"Reset Balance"}
+          {"Pay off Balance"}
         </button>
       </div>
     </main>
