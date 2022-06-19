@@ -33,7 +33,7 @@ const IndexPage = () => {
           </a>
 
           <a
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
+            href="https://vercel.com/new?utm_source=create-swear-jar&utm_medium=default-template&utm_campaign=create-swear-jar"
             className={styles.card}
           >
             <h2>Deploy &rarr;</h2>
@@ -46,7 +46,7 @@ const IndexPage = () => {
 
       <footer className={styles.footer}>
         <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
+          href="https://vercel.com?utm_source=create-swear-jar&utm_medium=default-template&utm_campaign=create-swear-jar"
           target="_blank"
           rel="noopener noreferrer"
         >

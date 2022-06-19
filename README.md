@@ -3,7 +3,7 @@
 [Helpful Tips for Starting a Next.js Chrome Extension | CSS-Tricks](https://css-tricks.com/nextjs-chrome-extension-starter/)
 
 ```sh
-cd next-app
+cd swear-jar
 
 yarn # run once
 
