@@ -82,17 +82,17 @@ const IndexPage = () => {
       <p className="text-sm text-slate-500">{`Kindly donated from ${numSwears} swears`}</p>
 
       <div className="flex flex-col mt-4">
-        <div className="flex flex-col" style={{ minHeight: 66 }}>
+        <div className="flex flex-col" style={{ minHeight: 70 }}>
           <button
             id="emojiRewardSwear"
-            className="bg-red-600 dark:bg-red-500 text-white font-medium py-4 px-4 rounded border-b-8 border-red-700 active:border-b-0 active:translate-y-1"
+            className="bg-red-600 dark:bg-red-500 text-white text-lg font-bold py-4 px-4 rounded border-b-8 border-red-700 active:border-b-0 active:translate-y-1"
             onClick={() => {
               setBalance(balance + 2.0);
               setNumSwears(numSwears + 1);
               emojiRewardSwear();
             }}
           >
-            {"Oh, #$%!"}
+            {"Oh, *$%^@!"}
           </button>
         </div>
         <button
