@@ -4,7 +4,11 @@ A simple Chrome extension that helps you put your money where your mouth is—li
 
 ## How It Works
 
+Simply open the app and hit the button—that's it.
+
 Swear Jar runs on the honor system. No AI listening in, no automatic charges—just you holding yourself accountable.
+
+![Demo](demo.gif)
 
 ### What to Do with Your Balance?
 
