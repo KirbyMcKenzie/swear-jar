@@ -1,10 +1,22 @@
 import { useTheme } from "next-themes";
 import { SunIcon, MoonIcon } from "@heroicons/react/solid";
-import { useState, useEffect } from "react";
+import { useState, useEffect, Fragment } from "react";
 import { useChromeStorageLocal } from "use-chrome-storage";
 import { useReward } from "react-rewards";
 
-const isDevelopment = process.env.NODE_ENV === "development";
+import { Tab } from "@headlessui/react";
+
+const isProduction = process.env.NODE_ENV === "production";
+
+const tabs = [
+  { label: "$0.25", value: 0.25 },
+  { label: "$0.50", value: 0.5 },
+  { label: "$1.00", value: 1 },
+  { label: "$2.00", value: 2 },
+  { label: "$5.00", value: 5 },
+];
+
+const initialTab = tabs[0];
 
 const IndexPage = () => {
   const [mounted, setMounted] = useState(false);
@@ -22,15 +34,15 @@ const IndexPage = () => {
     angle: "90",
   });
 
-  const [balance, setBalance] =
-    process.env.NODE_ENV === "production"
-      ? useChromeStorageLocal("balanceLocal", 0.0)
-      : useState(0);
+  const [balance, setBalance] = isProduction
+    ? useChromeStorageLocal("balanceLocal", 0.0)
+    : useState(0);
 
-  const [numSwears, setNumSwears] =
-    process.env.NODE_ENV === "production"
-      ? useChromeStorageLocal("numSwearsLocal", 0.0)
-      : useState(0);
+  const [numSwears, setNumSwears] = isProduction
+    ? useChromeStorageLocal("numSwearsLocal", 0.0)
+    : useState(0);
+
+  const [selectedTabValue, setSelectedTabValue] = useState(initialTab.value);
 
   useEffect(() => {
     setMounted(true);
@@ -67,7 +79,7 @@ const IndexPage = () => {
 
   return (
     <main
-      className="max-w-lg mx-auto p-4"
+      className="max-w-lg mx-auto p-4 overflow-hidden"
       style={{ minWidth: 400, maxHeight: 800, overflow: "hidden" }}
     >
       <div className="container flex justify-between items-center">
@@ -87,7 +99,7 @@ const IndexPage = () => {
             id="emojiRewardSwear"
             className="bg-red-600 dark:bg-red-500 text-white text-lg font-bold py-4 px-4 rounded border-b-8 border-red-700 active:border-b-0 active:translate-y-1"
             onClick={() => {
-              setBalance(balance + 2.0);
+              setBalance(balance + selectedTabValue);
               setNumSwears(numSwears + 1);
               emojiRewardSwear();
             }}
@@ -108,6 +120,33 @@ const IndexPage = () => {
           {"Pay off Balance"}
         </button>
       </div>
+
+      <div class="relative flex py-5 items-center">
+        <div class="flex-grow border-t border-slate-400" />
+      </div>
+
+      <p className="text-black dark:text-slate-500 font-medium">
+        {"Deposit Amount:"}
+      </p>
+
+      <Tab.Group onChange={(index) => setSelectedTabValue(tabs[index].value)}>
+        <Tab.List className="flex flex-row justify-evenly">
+          {tabs.map(({ label }) => (
+            <Tab as={Fragment} key={label}>
+              {({ selected }) => (
+                <button
+                  style={{ width: 80 }}
+                  className={`mt-2 p-2 rounded-full text-slate-500 text-sm hover:bg-slate-200 hover:dark:bg-slate-800 hover:dark:text-slate-500 ${
+                    selected ? "bg-slate-200 dark:bg-slate-800" : ""
+                  }`}
+                >
+                  {label}
+                </button>
+              )}
+            </Tab>
+          ))}
+        </Tab.List>
+      </Tab.Group>
     </main>
   );
 };
