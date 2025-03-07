@@ -3,7 +3,7 @@ import { Tab } from "@headlessui/react";
 
 const TabGroup = ({ tabs, onChange }) => {
   return (
-    <Tab.Group onChange={(index) => onChange(tabs[index].value)}>
+    <Tab.Group onChange={onChange}>
       <Tab.List className="flex flex-row justify-evenly">
         {tabs.map(({ label }) => (
           <Tab as={Fragment} key={label}>

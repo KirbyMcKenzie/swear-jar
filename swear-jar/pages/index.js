@@ -66,7 +66,11 @@ const IndexPage = () => {
       <p className="text-black dark:text-slate-500 font-medium">
         {"Deposit Amount:"}
       </p>
-      <TabGroup tabs={tabs} onChange={(value) => setSelectedTabValue(value)} />
+
+      <TabGroup
+        tabs={tabs}
+        onChange={(index) => setSelectedTabValue(tabs[index].value)}
+      />
     </main>
   );
 };
