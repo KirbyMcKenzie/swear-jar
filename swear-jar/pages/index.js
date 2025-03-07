@@ -19,7 +19,7 @@ const tabs = [
 ];
 
 const IndexPage = () => {
-  const [selectedTabValue, setSelectedTabValue] = useState(tabs[0]);
+  const [selectedTabValue, setSelectedTabValue] = useState(tabs[0].value);
 
   const [balance, setBalance] = isProd
     ? useChromeStorageLocal("balanceLocal", 0.0)
@@ -40,7 +40,7 @@ const IndexPage = () => {
   };
 
   return (
-    <main className="max-w-md mx-auto p-4 overflow-hidden">
+    <main className="max-w-md max-h-[320px] mx-auto p-4 overflow-hidden">
       <div className="flex justify-between items-center">
         <div>
           <h1 className="text-2xl font-semibold text-center text-slate-700 dark:text-slate-300 mr-2">
