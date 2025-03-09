@@ -11,11 +11,11 @@ import { formatCurrency } from "../utils/currency";
 const isProd = process.env.NODE_ENV === "production";
 
 const tabs = [
-  { label: "$0.25", value: 0.25 },
   { label: "$0.50", value: 0.5 },
   { label: "$1.00", value: 1 },
   { label: "$2.00", value: 2 },
   { label: "$5.00", value: 5 },
+  { label: "$10.00", value: 10 },
 ];
 
 const IndexPage = () => {
